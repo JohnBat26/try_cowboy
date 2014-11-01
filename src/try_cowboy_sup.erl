@@ -4,7 +4,9 @@
 -export([start_link/0, init/1]).
 
 start_link() ->
+  session_manager:init(),
   supervisor:start_link({local, ?MODULE}, ?MODULE, []).
+
 
 
 init([]) ->
@@ -13,3 +15,4 @@ init([]) ->
   MaxSecondsBetweenRestarts = 60,
   SupFlags = {RestartStrategy, MaxRestarts, MaxSecondsBetweenRestarts},
   {ok, {SupFlags, []}}.
+

@@ -22,6 +22,7 @@ start(_StartType, _StartArgs) ->
         {"/user/:name/messages", sample_template_handler, []},
         {"/session", sample_session_handler, []},
         {"/api/chat/", bullet_handler, [{handler, sample_web_socket_handler}]},
+        {"/user/profile/", my_handler, []},
         {'_', not_found_handler, []}
       ]}],
   Routing2 = cowboy_router:compile(Routing),
